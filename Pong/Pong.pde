@@ -3,6 +3,9 @@ Ball ball;
 Paddle left;
 Paddle right;
 //
+int leftscore = 0;
+int rightscore = 0;
+//
 void setup () {
   fullScreen();
   ball = new Ball ();
@@ -12,8 +15,8 @@ void setup () {
 void draw () {
 background (0);
 //
-ball.checkPaddle(right);
-ball.checkPaddle(left);
+ball.checkPaddleRight(right);
+ball.checkPaddleLeft(left);
 //
 left.show();
 right.show();
@@ -23,13 +26,18 @@ right.update();
 ball.update ();
 ball.net ();
 ball.show ();
+//
+fill (255);
+textSize (32);
+text (leftscore, 32, 40);
+text (rightscore, width-64, 40);
 }
 //
 void keyReleased () {
   left.move(0);
   right.move(0);
 }
-
+//
 void keyPressed () {
   if  (key == 'a') {
     left.move (-10);
